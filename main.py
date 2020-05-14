@@ -146,7 +146,7 @@ if __name__ == '__main__':
     cprint(''.join([str(x) for x in encrypted_msg]),'blue', attrs=['bold'], file=sys.stderr)
     cprint('(Time Taken for Encryption: ' + str(stop_enc - start_enc) + ')', 'yellow', file=sys.stderr)
     
-    cprint('\nDencrypted cooridinates: ', 'magenta', attrs=['bold'], file=sys.stderr)
+    cprint('\nDecrypted cooridinates: ', 'magenta', attrs=['bold'], file=sys.stderr)
     start_dec = timeit.default_timer()
     cprint(decrypt(encrypted_msg), 'magenta', attrs=['bold'], file=sys.stderr)
     stop_dec = timeit.default_timer()
