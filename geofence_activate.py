@@ -112,7 +112,7 @@ def decrypt(ciphertext):
 
 
 if __name__ == '__main__':
-    user_name = input('Enter User Details (fetched through RFID tag): ')
+    user_name = input('User Details (fetched through RFID tag): ')
     cprint('User Details: ' + str(user_name), 'cyan', attrs=['underline'], file=sys.stderr)
     primes = []
     total_no_primes = 0
@@ -138,16 +138,21 @@ if __name__ == '__main__':
     df = pd.DataFrame(data2)
     df.to_csv('data2.csv') # storage of r, e, d in table 2
 
-    message = input('\nLocation coordinates to be encrypted with public key: ')
+    # 20.4861236,85.9339274
+    message = input('\nLocation coordinates (fetched from Google Location API): ')
     start_enc = timeit.default_timer()
     encrypted_msg = encrypt(message)
     stop_enc = timeit.default_timer()
     cprint('\nEncrypted cooridinates: ', 'blue', attrs=['bold'], file=sys.stderr)
     cprint(''.join([str(x) for x in encrypted_msg]),'blue', attrs=['bold'], file=sys.stderr)
     cprint('(Time Taken for Encryption: ' + str(stop_enc - start_enc) + ')', 'yellow', file=sys.stderr)
+
+    edf = pd.DataFrame(encrypted_msg)
+    edf.to_csv('enc_coordinates.csv', index=False)
     
-    cprint('\nDecrypted cooridinates: ', 'magenta', attrs=['bold'], file=sys.stderr)
-    start_dec = timeit.default_timer()
-    cprint(decrypt(encrypted_msg), 'magenta', attrs=['bold'], file=sys.stderr)
-    stop_dec = timeit.default_timer()
-    cprint('(Time Taken for Decryption: ' + str(stop_dec - start_dec)  + ')', 'yellow', file=sys.stderr)
+    print('\n')
+    cprint('**********************', 'green', attrs=['bold'], file=sys.stderr)
+    cprint('*                    *', 'green', attrs=['bold'], file=sys.stderr)
+    cprint('* Geofence Activated *', 'green', attrs=['bold'], file=sys.stderr)
+    cprint('*                    *', 'green', attrs=['bold'], file=sys.stderr)
+    cprint('**********************', 'green', attrs=['bold'], file=sys.stderr)
