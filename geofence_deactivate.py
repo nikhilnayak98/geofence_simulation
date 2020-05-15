@@ -86,8 +86,8 @@ def generate_keypair(p, q, r):
 
 
 def encrypt(plaintext):
-    data1 = pd.read_csv('data1.csv') 
-    data2 = pd.read_csv('data2.csv')
+    data1 = pd.read_csv('table1.csv') 
+    data2 = pd.read_csv('table2.csv')
 
     key = int(data2['0'][1]) # e
     n = int(data1['0'][3])
@@ -99,8 +99,8 @@ def encrypt(plaintext):
 
 
 def decrypt(ciphertext):
-    data1 = pd.read_csv('data1.csv')
-    data2 = pd.read_csv('data2.csv')
+    data1 = pd.read_csv('table1.csv')
+    data2 = pd.read_csv('table2.csv')
 
     key = int(data2['0'][2]) # d
     n = int(data1['0'][3])

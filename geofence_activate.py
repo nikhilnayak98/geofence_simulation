@@ -86,8 +86,8 @@ def generate_keypair(p, q, r):
 
 
 def encrypt(plaintext):
-    data1 = pd.read_csv('data1.csv') 
-    data2 = pd.read_csv('data2.csv')
+    data1 = pd.read_csv('table1.csv') 
+    data2 = pd.read_csv('table2.csv')
 
     key = int(data2['0'][1]) # e
     n = int(data1['0'][3])
@@ -99,8 +99,8 @@ def encrypt(plaintext):
 
 
 def decrypt(ciphertext):
-    data1 = pd.read_csv('data1.csv')
-    data2 = pd.read_csv('data2.csv')
+    data1 = pd.read_csv('table1.csv')
+    data2 = pd.read_csv('table2.csv')
 
     key = int(data2['0'][2]) # d
     n = int(data1['0'][3])
@@ -132,11 +132,11 @@ if __name__ == '__main__':
 
     data1 = [p, q, phi, public[1]]  #  p, q, phi, n
     df = pd.DataFrame(data1)
-    df.to_csv('data1.csv') # storage of p, q, phi, n in table 1
+    df.to_csv('table1.csv') # storage of p, q, phi, n in table 1
 
     data2 = [r, public[0], private[0]] #  r, e, d
     df = pd.DataFrame(data2)
-    df.to_csv('data2.csv') # storage of r, e, d in table 2
+    df.to_csv('table2.csv') # storage of r, e, d in table 2
 
     # 20.4861236,85.9339274
     message = input('\nLocation coordinates (fetched from Google Location API): ')
